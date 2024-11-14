@@ -135,8 +135,22 @@ let daniel = {
   subjects: [],
 };
 
-///////////////////////////////////// BETYG
-// FORTSÄTT HÄR.
+///////////////////////////////////// BETYG sista uppgift.
+let betyg = {
+  students: [],
+  gradeStudent: function(student, subject, grade){
+    let studentRecord = this.students.find(s => s.name === student.name);
+
+    if (!studentRecord) {
+      studentRecord = { name: student.name, grades: [] };
+      this.students.push(studentRecord);
+    }
+
+    studentRecord.grades.push({subject: subject.name, grade: grade});
+  }
+}
+
+// console.log(betyg.students) för att se betyg
 
 //////////////////////////// SKAPA EN STRUKTUR.
 // Lägg till ämnen i skolan
@@ -233,6 +247,3 @@ commands.forEach(cmd => {
   console.log(`Command: ${cmd.command}`);
   console.log(`Description: ${cmd.description}\n`);
 })};
-
-// Console
-help()
